@@ -117,7 +117,7 @@ for rt in $RTS; do
     echo "--- pid $p"
     sudo cat /proc/$p/cmdline | tr '\0' ' '; echo
     sudo grep -E 'VmSize|VmRSS|Threads' /proc/$p/status
-    sudo tr '\0' '\n' < /proc/$p/environ | grep -E '^VFSD_FILTER_CONFIG' || echo "VFSD_FILTER_CONFIG unset"
+    sudo cat /proc/$p/environ | tr '\0' '\n' | grep -E '^VFSD_FILTER_CONFIG' || echo "VFSD_FILTER_CONFIG unset"
     sudo pmap -x $p > "$R/E1_pmap_${rt}_$p.txt" 2>&1
     tail -1 "$R/E1_pmap_${rt}_$p.txt"
   done
@@ -167,29 +167,36 @@ cp $SRC/e2.sh "$R/E2_guest_script.sh"
 fi
 ############################################################################
 if want E3; then
-log "E3 write discrepancy and bulk transfer, interleaved order, five trials"
+log "E3 write discrepancy and bulk transfer, interleaved order, ten trials, two write orders"
+# Each container writes the same 256 MiB file several times and times every
+# pass twice, with bash's time (as GNU time did in Table 5) and with dd's own
+# figure (as in Table 15). Order A starts with a buffered write, order B with
+# an fsync write, so a first write effect and an instrument effect separate.
+# The O_DIRECT passes bypass the guest page cache, so every byte reaches the
+# daemon; the buffered read is served from the guest page cache.
 cat > $SRC/e3.sh <<'SH'
 TIMEFORMAT='%3R'
-for mode in plain fsync; do
-  flag=""; [ "$mode" = fsync ] && flag="conv=fsync"
-  rm -f /shared/big; sync; echo 3 > /proc/sys/vm/drop_caches
-  t=$( { time dd if=/dev/zero of=/shared/big bs=1M count=256 $flag 2>/tmp/dd; } 2>&1 )
-  echo "WRITE mode=$mode time_real_s=$t dd_reported_s=$(grep -o '[0-9.]* seconds' /tmp/dd | cut -d' ' -f1)"
-done
-sync; echo 3 > /proc/sys/vm/drop_caches
-t=$( { time dd if=/shared/big of=/dev/null bs=1M 2>/tmp/dd; } 2>&1 )
-echo "READ cold time_real_s=$t dd_reported_s=$(grep -o '[0-9.]* seconds' /tmp/dd | cut -d' ' -f1)"
-t=$( { time dd if=/shared/big of=/dev/null bs=1M 2>/tmp/dd; } 2>&1 )
-echo "READ warm time_real_s=$t dd_reported_s=$(grep -o '[0-9.]* seconds' /tmp/dd | cut -d' ' -f1)"
+order=$1
+w() { rm -f /shared/big; t=$( { time dd if=/dev/zero of=/shared/big bs=1M count=256 $2 2>/tmp/dd; } 2>&1 )
+      echo "order=$order pass=$1 time_real_s=$t dd_reported_s=$(grep -o '[0-9.]* seconds' /tmp/dd | cut -d' ' -f1)"; }
+r() { t=$( { time dd if=/shared/big of=/dev/null bs=1M $2 2>/tmp/dd; } 2>&1 )
+      echo "order=$order pass=$1 time_real_s=$t dd_reported_s=$(grep -o '[0-9.]* seconds' /tmp/dd | cut -d' ' -f1) $(grep -i -m1 error /tmp/dd)"; }
+if [ "$order" = A ]; then w 1_write_buffered ""; w 2_write_fsync conv=fsync
+else w 1_write_fsync conv=fsync; w 2_write_buffered ""; fi
+w 3_write_buffered_again ""
+w 4_write_direct oflag=direct
+r 5_read_direct iflag=direct
+r 6_read_buffered ""
 rm -f /shared/big
 SH
 cp $SRC/e3.sh "$R/E3_guest_script.sh"
 policy listing2
 {
-for t in 1 2 3 4 5; do
-  for rt in $(printf 'katarsstock\nkatarsfilt\n' | shuf); do
+for t in $(seq 1 10); do
+  for job in $(printf 'katarsstock:A\nkatarsfilt:A\nkatarsstock:B\nkatarsfilt:B\n' | shuf); do
+    rt=${job%:*}; o=${job#*:}
     fresh_share; drop_caches
-    run_c "$rt" "$BASH_IMG" bash /src/e3.sh | sed "s/^/trial=$t runtime=$rt /"
+    run_c "$rt" "$BASH_IMG" bash /src/e3.sh "$o" | sed "s/^/trial=$t runtime=$rt /"
   done
 done
 } > "$R/E3_bulk_interleaved.txt" 2>&1
@@ -235,6 +242,7 @@ mkdir -p /shared/w/tar && tar -xpf /src/kata.tar -C /shared/w/tar; echo "WORKLOA
 echo "FILES $(find /shared/w/tar | wc -l) SYMLINKS $(find /shared/w/tar -type l | wc -l)"
 SH
 cat > $SRC/w_git.sh <<'SH'
+git config --global --add safe.directory '*'
 git clone -q /src/kata.git /shared/w/git; echo "WORKLOAD git exit=$?"
 git -C /shared/w/git status --porcelain 2>&1 | wc -l | sed 's/^/GIT_STATUS_LINES /'
 echo "FILES $(find /shared/w/git | wc -l) SYMLINKS $(find /shared/w/git -type l | wc -l)"
@@ -252,16 +260,25 @@ tail -3 /tmp/v.log
 /shared/w/venv/bin/python -c 'print("VENV_PYTHON_OK")' 2>&1 | tail -1
 echo "FILES $(find /shared/w/venv | wc -l) SYMLINKS $(find /shared/w/venv -type l | wc -l)"
 SH
+# Classifies every symlink left in the tree by the rule that would refuse it.
+cat > $SRC/cls.sh <<'SH'
+find "$1" -type l 2>/dev/null | while read -r l; do
+  t=$(readlink "$l")
+  case "$t" in /*) echo ABSOLUTE;; *) case "/$t/" in */../*) echo DOTDOT;; *) echo PLAIN_RELATIVE;; esac;; esac
+done | sort | uniq -c | sed 's/^ */SYMLINK_CLASS /'
+SH
+for f in $SRC/w_*.sh; do echo 'sh /src/cls.sh /shared/w' >> "$f"; done
+TIMEFORMAT='WALL_SECONDS %3R'
 {
 for wl in tar git npm venv; do
   case $wl in tar) img=$ALPINE; cmd="sh /src/w_tar.sh";; git) img=$GIT; cmd="sh /src/w_git.sh";;
               npm) img=$NODE; cmd="sh /src/w_npm.sh";; venv) img=$PY; cmd="sh /src/w_venv.sh";; esac
   echo "=================== workload $wl, stock ==================="
-  fresh_share; run_c katarsstock "$img" $cmd
+  fresh_share; time run_c katarsstock "$img" $cmd
   for pol in listing2_all dotdot_allowed_all chmod_denied_all; do
     echo "=================== workload $wl, filtered, policy $pol ==================="
     policy $pol; fresh_share; audit_reset
-    run_c katarsfilt "$img" $cmd
+    time run_c katarsfilt "$img" $cmd
     audit_summary "E5 $wl $pol"
     sudo cp /var/log/vfsd/audit.jsonl "$R/E5_audit_${wl}_${pol}.jsonl"
   done
