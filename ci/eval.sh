@@ -23,7 +23,7 @@ cid() { echo "c$(date +%s%N)"; }
 # run_c RUNTIME IMAGE CMD...  (foreground, removed afterwards)
 run_c() {
   local rt=$1 img=$2; shift 2
-  sudo timeout 240 ctr run --rm --privileged \
+  sudo timeout 240 ctr run --rm \
     --runtime "io.containerd.$rt.v2" --runtime-config-path "${CFG[$rt]}" \
     --mount "type=bind,src=$SHARE,dst=/shared,options=rbind:rw" \
     --mount "type=bind,src=$SRC,dst=/src,options=rbind:rw" \
@@ -31,7 +31,7 @@ run_c() {
 }
 # start_c RUNTIME ID : detached sleeping container
 start_c() {
-  sudo timeout 300 ctr run -d --privileged \
+  sudo timeout 300 ctr run -d \
     --runtime "io.containerd.$1.v2" --runtime-config-path "${CFG[$1]}" \
     --mount "type=bind,src=$SHARE,dst=/shared,options=rbind:rw" \
     "$ALPINE" "$2" sleep 900 >/dev/null
