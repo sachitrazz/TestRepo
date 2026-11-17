@@ -15,7 +15,7 @@ npm install --cache $SRC/npmcache --no-audit --no-fund --loglevel=error
 rm -rf node_modules
 cd /
 chmod -R a+rwX $SRC
-for img in mirror.gcr.io/library/alpine:3.20 mirror.gcr.io/library/bash:5.2 mirror.gcr.io/library/node:22-alpine \
+for img in mirror.gcr.io/library/alpine:3.20 docker.io/library/bash:5.2 mirror.gcr.io/library/node:22-alpine \
            mirror.gcr.io/library/python:3.12-alpine docker.io/alpine/git:v2.47.2; do
   for i in 1 2 3; do sudo ctr images pull "$img" >/dev/null && break || sleep 10; done
 done

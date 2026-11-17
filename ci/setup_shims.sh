@@ -28,10 +28,9 @@ for v in stock filt; do
     "$RS_DEF" | sudo tee /etc/kata-eval/rs-$v.toml >/dev/null
 done
 [ -f "$GO_DEF" ] && sudo cp "$GO_DEF" /etc/kata-eval/go-stock.toml
-mk_shim() { # name config real_shim
+mk_shim() { # name config(unused: passed per run as a containerd runtime option) real_shim
   sudo tee /usr/local/bin/containerd-shim-$1-v2 >/dev/null <<W
 #!/bin/sh
-export KATA_CONF_FILE=$2
 exec $3 "\$@"
 W
   sudo chmod 0755 /usr/local/bin/containerd-shim-$1-v2
