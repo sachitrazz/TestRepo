@@ -36,7 +36,7 @@ jobs:
   eval42:
     needs: build
     runs-on: ubuntu-24.04
-    timeout-minutes: 150
+    timeout-minutes: 200
     env: { GH_TOKEN: "${{ github.token }}", RESULTS: "${{ github.workspace }}/results" }
     steps:
       - uses: actions/checkout@v4
@@ -50,8 +50,34 @@ jobs:
           bash ci/setup_shims.sh 2>&1 | tee setup_shims.log
       - name: Prepare workloads
         run: bash ci/prep_workloads.sh
-      - name: Evaluate
-        run: bash ci/eval.sh
+      - name: E0 environment
+        timeout-minutes: 5
+        continue-on-error: true
+        run: bash ci/eval.sh E0
+      - name: E1 kata facts
+        timeout-minutes: 15
+        continue-on-error: true
+        run: bash ci/eval.sh E1
+      - name: E2 smoke symlink mutation
+        timeout-minutes: 15
+        continue-on-error: true
+        run: bash ci/eval.sh E2
+      - name: E3 bulk and write discrepancy
+        timeout-minutes: 30
+        continue-on-error: true
+        run: bash ci/eval.sh E3
+      - name: E4 metadata
+        timeout-minutes: 30
+        continue-on-error: true
+        run: bash ci/eval.sh E4
+      - name: E5 real workloads
+        timeout-minutes: 50
+        continue-on-error: true
+        run: bash ci/eval.sh E5
+      - name: E6 vsz maps
+        timeout-minutes: 15
+        continue-on-error: true
+        run: bash ci/eval.sh E6
       - name: Collect logs
         if: always()
         run: |

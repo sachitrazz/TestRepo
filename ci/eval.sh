@@ -23,7 +23,7 @@ cid() { echo "c$(date +%s%N)"; }
 # run_c RUNTIME IMAGE CMD...  (foreground, removed afterwards)
 run_c() {
   local rt=$1 img=$2; shift 2
-  sudo timeout 900 ctr run --rm --privileged \
+  sudo timeout 240 ctr run --rm --privileged \
     --runtime "io.containerd.$rt.v2" --runtime-config-path "${CFG[$rt]}" \
     --mount "type=bind,src=$SHARE,dst=/shared,options=rbind:rw" \
     --mount "type=bind,src=$SRC,dst=/src,options=rbind:rw" \
@@ -37,7 +37,7 @@ start_c() {
     "$ALPINE" "$2" sleep 900 >/dev/null
   sleep 8
 }
-stop_c() { sudo ctr task kill -s SIGKILL "$1" 2>/dev/null; sleep 3; sudo ctr task rm -f "$1" 2>/dev/null; sudo ctr container rm "$1" 2>/dev/null; sleep 2; }
+stop_c() { sudo timeout 30 ctr task kill -s SIGKILL "$1" 2>/dev/null; sleep 3; sudo timeout 30 ctr task rm -f "$1" 2>/dev/null; sudo timeout 30 ctr container rm "$1" 2>/dev/null; sleep 2; }
 daemon_pids() { pgrep -f 'virtiofsd' | sort -n; }
 
 audit_reset() { : | sudo tee /var/log/vfsd/audit.jsonl >/dev/null; }
@@ -70,8 +70,11 @@ PY
 
 sudo mkdir -p /tmp/eval && sudo chmod 0777 /tmp/eval
 mkdir -p "$SRC"
+WANT=" ${*:-E0 E1 E2 E3 E4 E5 E6} "
+want() { case "$WANT" in *" $1 "*) return 0;; esac; return 1; }
 
 ############################################################################
+if want E0; then
 log "E0 environment and hashes"
 {
   date -u; uname -a; nproc; free -m; lscpu | grep -E 'Model name|Hypervisor|Virtualization'
@@ -91,7 +94,9 @@ log "E0 environment and hashes"
   grep -nE '^(shared_fs|virtio_fs_daemon|valid_virtio_fs_daemon_paths|virtio_fs_extra_args|virtio_fs_cache|virtio_fs_cache_size|virtio_fs_is_dax|default_memory|default_vcpus)\b' /etc/kata-eval/*.toml
 } > "$R/E0_environment.txt" 2>&1
 
+fi
 ############################################################################
+if want E1; then
 log "E1 kata facts: daemon command line, guest mounts, process maps"
 policy listing2
 {
@@ -105,8 +110,8 @@ for rt in $RTS; do
   echo "--- daemon processes (pid ppid user args)"
   ps -eo pid,ppid,user,args | grep -E '[v]irtiofsd|[v]fsd-'
   echo "--- guest /proc/mounts (virtiofs)"
-  sudo ctr task exec --exec-id m1 "$id" cat /proc/mounts | grep -E 'virtiofs|kataShared' || true
-  echo "--- guest kernel"; sudo ctr task exec --exec-id m2 "$id" uname -a || true
+  sudo timeout 60 ctr task exec --exec-id m1 "$id" cat /proc/mounts | grep -E 'virtiofs|kataShared' || true
+  echo "--- guest kernel"; sudo timeout 60 ctr task exec --exec-id m2 "$id" uname -a || true
   for p in $(daemon_pids); do
     case " $before " in *" $p "*) continue;; esac
     echo "--- pid $p"
@@ -121,7 +126,9 @@ done
 echo "--- filtered daemon stderr markers"; grep -h 'vfsd-filter:' /var/log/vfsd/audit.jsonl | sort | uniq -c
 } > "$R/E1_kata_facts.txt" 2>&1
 
+fi
 ############################################################################
+if want E2; then
 log "E2 smoke, symlink policy and ten target mutations, stock and filtered"
 cat > $SRC/e2.sh <<'SH'
 cd /shared
@@ -157,7 +164,9 @@ done
 } > "$R/E2_smoke_symlink_mutation.txt" 2>&1
 cp $SRC/e2.sh "$R/E2_guest_script.sh"
 
+fi
 ############################################################################
+if want E3; then
 log "E3 write discrepancy and bulk transfer, interleaved order, five trials"
 cat > $SRC/e3.sh <<'SH'
 TIMEFORMAT='%3R'
@@ -185,7 +194,9 @@ for t in 1 2 3 4 5; do
 done
 } > "$R/E3_bulk_interleaved.txt" 2>&1
 
+fi
 ############################################################################
+if want E4; then
 log "E4 metadata: one process per operation versus one process for all, interleaved"
 cat > $SRC/e4.sh <<'SH'
 N=1000; D=/shared/md; mkdir -p $D
@@ -215,7 +226,9 @@ for t in 1 2 3 4 5; do
 done
 } > "$R/E4_metadata_interleaved.txt" 2>&1
 
+fi
 ############################################################################
+if want E5; then
 log "E5 real guest workloads under three policies, audit level all"
 cat > $SRC/w_tar.sh <<'SH'
 mkdir -p /shared/w/tar && tar -xpf /src/kata.tar -C /shared/w/tar; echo "WORKLOAD tar exit=$?"
@@ -257,7 +270,9 @@ done
 cp $SRC/w_*.sh "$R/"
 ( cd "$R" && for f in E5_audit_*.jsonl; do gzip -9 "$f"; done )
 
+fi
 ############################################################################
+if want E6; then
 log "E6 VSZ: process maps of the stock and filtered daemon, two runs each"
 policy listing2
 {
@@ -276,4 +291,4 @@ done
 done
 } > "$R/E6_vsz_maps.txt" 2>&1
 
-log "done"
+fi
