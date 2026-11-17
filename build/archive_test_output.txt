@@ -1,0 +1,409 @@
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded anstyle v1.0.14
+  Downloaded anstyle-parse v1.0.0
+  Downloaded anstream v1.0.0
+  Downloaded equivalent v1.0.3
+  Downloaded anes v0.1.6
+  Downloaded hostname v0.3.1
+  Downloaded cfg-if v1.0.5
+  Downloaded embedded-io v0.4.0
+  Downloaded termcolor v1.4.1
+  Downloaded libseccomp-sys v0.2.1
+  Downloaded syslog v6.1.1
+  Downloaded ciborium-io v0.2.2
+  Downloaded same-file v1.0.6
+  Downloaded cast v0.3.0
+  Downloaded futures-task v0.3.34
+  Downloaded rand_chacha v0.9.0
+  Downloaded toml v0.8.23
+  Downloaded futures-io v0.3.34
+  Downloaded colorchoice v1.0.5
+  Downloaded cobs v0.3.0
+  Downloaded toml_datetime v0.6.11
+  Downloaded embedded-io v0.6.1
+  Downloaded hash32 v0.2.1
+  Downloaded is-terminal v0.4.17
+  Downloaded is_terminal_polyfill v1.70.2
+  Downloaded heck v0.5.0
+  Downloaded ciborium-ll v0.2.2
+  Downloaded clap_lex v1.0.1
+  Downloaded futures-sink v0.3.34
+  Downloaded futures-macro v0.3.34
+  Downloaded time-macros v0.2.24
+  Downloaded toml_write v0.1.2
+  Downloaded once_cell v1.21.4
+  Downloaded either v1.19.0
+  Downloaded tinytemplate v1.2.1
+  Downloaded itoa v1.0.18
+  Downloaded vhost-user-backend v0.22.0
+  Downloaded powerfmt v0.2.1
+  Downloaded rustc_version v0.4.1
+  Downloaded scopeguard v1.2.0
+  Downloaded stable_deref_trait v1.2.1
+  Downloaded num_threads v0.1.8
+  Downloaded strsim v0.11.1
+  Downloaded num-conv v0.1.0
+  Downloaded anstyle-query v1.1.5
+  Downloaded atty v0.2.14
+  Downloaded range-traits v0.3.2
+  Downloaded deranged v0.5.5
+  Downloaded futures-core v0.3.34
+  Downloaded futures-executor v0.3.34
+  Downloaded humantime v2.4.0
+  Downloaded btree-range-map v0.7.2
+  Downloaded ppv-lite86 v0.2.21
+  Downloaded criterion-plot v0.5.0
+  Downloaded log v0.4.35
+  Downloaded serde_spanned v0.6.9
+  Downloaded match_cfg v0.1.0
+  Downloaded rustversion v1.0.23
+  Downloaded bitflags v1.3.2
+  Downloaded rand_core v0.9.5
+  Downloaded autocfg v1.5.1
+  Downloaded capng v0.2.3
+  Downloaded lock_api v0.4.14
+  Downloaded oorandom v11.1.5
+  Downloaded utf8parse v0.2.2
+  Downloaded slab v0.4.12
+  Downloaded thiserror v2.0.21
+  Downloaded pin-project-lite v0.2.17
+  Downloaded quote v1.0.47
+  Downloaded time-core v0.1.6
+  Downloaded version_check v0.9.5
+  Downloaded ciborium v0.2.2
+  Downloaded byteorder v1.5.0
+  Downloaded clap_derive v4.5.61
+  Downloaded env_logger v0.8.4
+  Downloaded error-chain v0.12.4
+  Downloaded futures-channel v0.3.34
+  Downloaded smallvec v1.16.4
+  Downloaded spin v0.9.9
+  Downloaded btree-slab v0.6.1
+  Downloaded semver v1.0.28
+  Downloaded futures v0.3.34
+  Downloaded getrandom v0.3.4
+  Downloaded half v2.7.1
+  Downloaded cc-traits v2.0.0
+  Downloaded num-traits v0.2.19
+  Downloaded bitflags v2.13.2
+  Downloaded clap v4.5.61
+  Downloaded postcard v1.1.3
+  Downloaded proc-macro2 v1.0.107
+  Downloaded serde v1.0.229
+  Downloaded serde_derive v1.0.229
+  Downloaded walkdir v2.5.0
+  Downloaded serde_core v1.0.229
+  Downloaded thiserror-impl v2.0.21
+  Downloaded zmij v1.0.23
+  Downloaded arc-swap v1.9.3
+  Downloaded heapless v0.7.17
+  Downloaded rand v0.9.5
+  Downloaded criterion v0.5.1
+  Downloaded indexmap v2.13.1
+  Downloaded itertools v0.10.5
+  Downloaded memchr v2.8.3
+  Downloaded regex v1.13.1
+  Downloaded aho-corasick v1.1.5
+  Downloaded clap_builder v4.5.61
+  Downloaded hashbrown v0.16.1
+  Downloaded futures-util v0.3.34
+  Downloaded serde_json v1.0.154
+  Downloaded uuid v1.20.0
+  Downloaded syn v2.0.119
+  Downloaded syn v3.0.9
+  Downloaded regex-syntax v0.8.11
+  Downloaded regex-automata v0.4.18
+  Downloaded toml_edit v0.22.27
+  Downloaded time v0.3.44
+  Downloaded unicode-ident v1.0.27
+  Downloaded libc v0.2.191
+  Downloaded vmm-sys-util v0.15.0
+  Downloaded vm-memory v0.17.1
+  Downloaded zerocopy-derive v0.8.63
+  Downloaded virtio-queue v0.17.0
+  Downloaded winnow v0.7.15
+  Downloaded vhost v0.16.0
+  Downloaded virtiofsd v1.14.0
+  Downloaded virtio-bindings v0.2.7
+  Downloaded zerocopy v0.8.63
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling libc v0.2.191
+   Compiling serde_core v1.0.229
+   Compiling zerocopy v0.8.63
+   Compiling serde v1.0.229
+   Compiling cfg-if v1.0.5
+   Compiling memchr v2.8.3
+   Compiling syn v3.0.9
+   Compiling syn v2.0.119
+   Compiling getrandom v0.3.4
+   Compiling thiserror v2.0.21
+   Compiling rustversion v1.0.23
+   Compiling slab v0.4.12
+   Compiling rand_core v0.9.5
+   Compiling itoa v1.0.18
+   Compiling semver v1.0.28
+   Compiling bitflags v1.3.2
+   Compiling utf8parse v0.2.2
+   Compiling anstyle-parse v1.0.0
+   Compiling rustc_version v0.4.1
+   Compiling arc-swap v1.9.3
+   Compiling aho-corasick v1.1.5
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling zerocopy-derive v0.8.63
+   Compiling anstyle v1.0.14
+   Compiling colorchoice v1.0.5
+   Compiling version_check v0.9.5
+   Compiling anstyle-query v1.1.5
+   Compiling scopeguard v1.2.0
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling futures-core v0.3.34
+   Compiling log v0.4.35
+   Compiling futures-sink v0.3.34
+   Compiling regex-syntax v0.8.11
+   Compiling futures-channel v0.3.34
+   Compiling anstream v1.0.0
+   Compiling regex-automata v0.4.18
+   Compiling lock_api v0.4.14
+   Compiling error-chain v0.12.4
+   Compiling vm-memory v0.17.1
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.9.0
+   Compiling rand v0.9.5
+   Compiling futures-macro v0.3.34
+   Compiling heapless v0.7.17
+   Compiling vmm-sys-util v0.15.0
+   Compiling futures-io v0.3.34
+   Compiling zmij v1.0.23
+   Compiling strsim v0.11.1
+   Compiling clap_lex v1.0.1
+   Compiling futures-task v0.3.34
+   Compiling powerfmt v0.2.1
+   Compiling byteorder v1.5.0
+   Compiling heck v0.5.0
+   Compiling pin-project-lite v0.2.17
+   Compiling clap_derive v4.5.61
+   Compiling futures-util v0.3.34
+   Compiling hash32 v0.2.1
+   Compiling deranged v0.5.5
+   Compiling clap_builder v4.5.61
+   Compiling uuid v1.20.0
+   Compiling regex v1.13.1
+   Compiling spin v0.9.9
+   Compiling cc-traits v2.0.0
+   Compiling serde_json v1.0.154
+   Compiling virtio-bindings v0.2.7
+   Compiling stable_deref_trait v1.2.1
+   Compiling num_threads v0.1.8
+   Compiling autocfg v1.5.1
+   Compiling match_cfg v0.1.0
+   Compiling num-conv v0.1.0
+   Compiling hashbrown v0.16.1
+   Compiling equivalent v1.0.3
+   Compiling smallvec v1.16.4
+   Compiling time-core v0.1.6
+   Compiling capng v0.2.3
+   Compiling bitflags v2.13.2
+   Compiling libseccomp-sys v0.2.1
+   Compiling vhost v0.16.0
+   Compiling indexmap v2.13.1
+   Compiling time v0.3.44
+   Compiling btree-slab v0.6.1
+   Compiling num-traits v0.2.19
+   Compiling hostname v0.3.1
+   Compiling virtio-queue v0.17.0
+   Compiling clap v4.5.61
+   Compiling futures-executor v0.3.34
+   Compiling half v2.7.1
+   Compiling toml_datetime v0.6.11
+   Compiling serde_spanned v0.6.9
+   Compiling cobs v0.3.0
+   Compiling atty v0.2.14
+   Compiling termcolor v1.4.1
+   Compiling either v1.19.0
+   Compiling humantime v2.4.0
+   Compiling ciborium-io v0.2.2
+   Compiling winnow v0.7.15
+   Compiling toml_write v0.1.2
+   Compiling range-traits v0.3.2
+   Compiling ciborium-ll v0.2.2
+   Compiling btree-range-map v0.7.2
+   Compiling itertools v0.10.5
+   Compiling env_logger v0.8.4
+   Compiling toml_edit v0.22.27
+   Compiling postcard v1.1.3
+   Compiling futures v0.3.34
+   Compiling syslog v6.1.1
+   Compiling vhost-user-backend v0.22.0
+   Compiling same-file v1.0.6
+   Compiling cast v0.3.0
+   Compiling walkdir v2.5.0
+   Compiling criterion-plot v0.5.0
+   Compiling virtiofsd v1.14.0
+   Compiling toml v0.8.23
+   Compiling tinytemplate v1.2.1
+   Compiling ciborium v0.2.2
+   Compiling is-terminal v0.4.17
+   Compiling oorandom v11.1.5
+   Compiling once_cell v1.21.4
+   Compiling anes v0.1.6
+   Compiling criterion v0.5.1
+   Compiling vfsd-filter v0.2.0 (/home/runner/work/TestRepo/TestRepo/vfsd-filter-0.2.0)
+    Finished `release` profile [optimized] target(s) in 38.92s
+     Running unittests src/lib.rs (target/release/deps/vfsd_filter-c0412f71b5a4a588)
+
+running 63 tests
+test filter::audit::tests::test_channel_full_increments_dropped ... ok{"ts_wall_s":1794896130,"ts_wall_ns":466775246,"mono_ns":508836352959,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776358,"mono_ns":508836353841,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776448,"mono_ns":508836353921,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776518,"mono_ns":508836353991,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776578,"mono_ns":508836354051,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776658,"mono_ns":508836354131,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776718,"mono_ns":508836354191,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776778,"mono_ns":508836354251,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776848,"mono_ns":508836354311,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776908,"mono_ns":508836354381,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466776968,"mono_ns":508836354441,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777039,"mono_ns":508836354512,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777109,"mono_ns":508836354582,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777169,"mono_ns":508836354642,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777229,"mono_ns":508836354702,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777299,"mono_ns":508836354762,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777359,"mono_ns":508836354832,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777419,"mono_ns":508836354892,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777489,"mono_ns":508836354952,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777549,"mono_ns":508836355022,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777609,"mono_ns":508836355082,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777680,"mono_ns":508836355153,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777740,"mono_ns":508836355213,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777800,"mono_ns":508836355273,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777860,"mono_ns":508836355333,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777930,"mono_ns":508836355403,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466777990,"mono_ns":508836355463,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778060,"mono_ns":508836355533,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778120,"mono_ns":508836355593,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778190,"mono_ns":508836355653,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778250,"mono_ns":508836355723,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778310,"mono_ns":508836355783,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778381,"mono_ns":508836355854,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778441,"mono_ns":508836355914,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778511,"mono_ns":508836355984,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778571,"mono_ns":508836356044,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778641,"mono_ns":508836356104,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778701,"mono_ns":508836356174,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778761,"mono_ns":508836356234,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778821,"mono_ns":508836356294,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778891,"mono_ns":508836356354,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466778951,"mono_ns":508836356424,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779011,"mono_ns":508836356485,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779072,"mono_ns":508836356545,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779142,"mono_ns":508836356615,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779202,"mono_ns":508836356675,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779272,"mono_ns":508836356745,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779332,"mono_ns":508836356805,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779392,"mono_ns":508836356865,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779462,"mono_ns":508836356935,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779522,"mono_ns":508836356995,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779582,"mono_ns":508836357055,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779652,"mono_ns":508836357115,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779713,"mono_ns":508836357186,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779773,"mono_ns":508836357246,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779843,"mono_ns":508836357306,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779903,"mono_ns":508836357376,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466779963,"mono_ns":508836357436,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466780023,"mono_ns":508836357496,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466780103,"mono_ns":508836357566,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466780163,"mono_ns":508836357626,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466780223,"mono_ns":508836357696,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466780283,"mono_ns":508836357756,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+{"ts_wall_s":1794896130,"ts_wall_ns":466780343,"mono_ns":508836357817,"op":"write","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":1,"decision":"allow","latency_ns":50,"name":"f"}
+
+test filter::audit::tests::test_contains_dotdot_component ... ok
+test filter::audit::tests::test_deny_sent_on_level_deny ... {"ts_wall_s":1794896130,"ts_wall_ns":466955349,"mono_ns":508836532893,"op":"unlink","uid":1000,"gid":1000,"pid":5678,"parent_inode":1,"target_inode":0,"decision":"deny","errno":1,"reason":"test deny","latency_ns":200,"name":"shadow"}
+ok
+test filter::audit::tests::test_level_all_allow_sent ... {"ts_wall_s":1794896130,"ts_wall_ns":467015599,"mono_ns":508836593122,"op":"read","uid":1000,"gid":1000,"pid":5678,"parent_inode":0,"target_inode":123,"decision":"allow","latency_ns":100,"name":"file.txt"}
+ok
+test filter::audit::tests::test_level_deny_allow_not_sent ... ok
+test filter::audit::tests::test_level_none_sender_is_none ... ok
+test filter::audit::tests::test_name_truncation_at_64 ... ok
+test filter::audit::tests::test_record_json_allow ... ok
+test filter::audit::tests::test_record_json_deny ... ok
+test filter::audit::tests::test_record_json_escapes_name_control_chars ... ok
+test filter::audit::tests::test_writer_errors_are_counted ... ok
+test filter::forwarding_regression_tests::absolute_symlink_name_does_not_reach_inner_filesystem ... ok
+test filter::forwarding_regression_tests::allowed_symlink_reaches_inner_filesystem ... ok
+test filter::forwarding_regression_tests::denied_open_flag_does_not_reach_inner_filesystem ... ok
+test filter::forwarding_regression_tests::denied_rename_does_not_reach_inner_filesystem ... ok
+test filter::forwarding_regression_tests::denied_setattr_does_not_reach_inner_filesystem ... ok
+test filter::forwarding_regression_tests::denied_symlink_does_not_reach_inner_filesystem ... ok
+test filter::forwarding_regression_tests::denied_tmpfile_does_not_reach_inner_filesystem ... ok
+test filter::forwarding_regression_tests::disabled_open_policy_blocks_opendir ... ok
+test filter::forwarding_regression_tests::disabled_read_policy_blocks_readlink_and_readdir ... ok
+test filter::forwarding_regression_tests::real_passthrough_absolute_symlink_name_is_blocked_by_filter ... FAILED
+test filter::forwarding_regression_tests::real_passthrough_allows_relative_symlink_inside_share ... FAILED
+test filter::policy::tests::test_default_deny_blocks_unmatched_ops ... ok
+test filter::policy::tests::test_default_engine_allows_all_ops ... ok
+test filter::policy::tests::test_default_engine_allows_valid_name_ops ... ok
+test filter::policy::tests::test_deny_chmod ... ok
+test filter::policy::tests::test_deny_create_op ... ok
+test filter::policy::tests::test_deny_delete_op ... ok
+test filter::policy::tests::test_deny_exact_name ... ok
+test filter::policy::tests::test_deny_prefix ... ok
+test filter::policy::tests::test_deny_suffix ... ok
+test filter::policy::tests::test_deny_trunc_flag ... ok
+test filter::policy::tests::test_deny_truncate ... ok
+test filter::policy::tests::test_deny_write_op ... ok
+test filter::policy::tests::test_deny_wronly_flag ... ok
+test filter::policy::tests::test_disabled_allows_everything ... ok
+test filter::policy::tests::test_dotdot_component_present ... ok
+test filter::policy::tests::test_dotdot_fast_exit_no_dots ... ok
+test filter::policy::tests::test_dotdot_not_a_component ... ok
+test filter::policy::tests::test_dotdot_trailing ... ok
+test filter::policy::tests::test_lookup_still_applies_name_denylists ... ok
+test filter::policy::tests::test_name_denylist_does_not_normalize_unicode ... ok
+test filter::policy::tests::test_name_denylist_is_case_sensitive ... ok
+test filter::policy::tests::test_name_validator_deterministic_adversarial_inputs ... ok
+test filter::policy::tests::test_rename_denied_new_name_by_suffix ... ok
+test filter::policy::tests::test_rename_denied_old_name_by_suffix ... ok
+test filter::policy::tests::test_rename_malformed_newname ... ok
+test filter::policy::tests::test_root_child_allowed_different_name ... ok
+test filter::policy::tests::test_root_child_denied ... ok
+test filter::policy::tests::test_symlink_absolute_denied ... ok
+test filter::policy::tests::test_symlink_absolute_denied_by_default ... ok
+test filter::policy::tests::test_symlink_absolute_name_rejected ... ok
+test filter::policy::tests::test_symlink_dotdot_denied ... ok
+test filter::policy::tests::test_symlink_dotdot_denied_by_default ... ok
+test filter::policy::tests::test_symlink_dotdot_substring_not_component ... ok
+test filter::policy::tests::test_symlink_target_adversarial_matrix ... ok
+test filter::policy::tests::test_validate_name_dot ... ok
+test filter::policy::tests::test_validate_name_dotdot ... ok
+test filter::policy::tests::test_validate_name_empty ... ok
+test filter::policy::tests::test_validate_name_name_max_boundary ... ok
+test filter::policy::tests::test_validate_name_nul_rejected ... ok
+test filter::policy::tests::test_validate_name_slash ... ok
+test filter::policy::tests::test_validate_name_valid ... ok
+
+failures:
+
+---- filter::forwarding_regression_tests::real_passthrough_absolute_symlink_name_is_blocked_by_filter stdout ----
+
+thread 'filter::forwarding_regression_tests::real_passthrough_absolute_symlink_name_is_blocked_by_filter' (4752) panicked at src/filter/mod.rs:1209:89:
+called `Result::unwrap()` on an `Err` value: Os { code: 13, kind: PermissionDenied, message: "Permission denied" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- filter::forwarding_regression_tests::real_passthrough_allows_relative_symlink_inside_share stdout ----
+
+thread 'filter::forwarding_regression_tests::real_passthrough_allows_relative_symlink_inside_share' (4753) panicked at src/filter/mod.rs:1220:89:
+called `Result::unwrap()` on an `Err` value: Os { code: 13, kind: PermissionDenied, message: "Permission denied" }
+
+
+failures:
+    filter::forwarding_regression_tests::real_passthrough_absolute_symlink_name_is_blocked_by_filter
+    filter::forwarding_regression_tests::real_passthrough_allows_relative_symlink_inside_share
+
+test result: FAILED. 61 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `--lib`

@@ -1,0 +1,7 @@
+[06:17:17] E0 environment and hashes
+[06:17:18] E1 kata facts: daemon command line, guest mounts, process maps
+[06:27:44] E2 smoke, symlink policy and ten target mutations, stock and filtered
+[06:35:45] E3 write discrepancy and bulk transfer, interleaved order, five trials
+[07:05:58] E4 metadata: one process per operation versus one process for all, interleaved
+[07:36:11] E5 real guest workloads under three policies, audit level all
+[08:26:23] E6 VSZ: process maps of the stock and filtered daemon, two runs each

@@ -1,0 +1,54 @@
+release ships Go shim: no
+=================== katarsstock ===================
+--- daemon processes (pid ppid user args)
+   2849    2842 root     /opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896238527178001/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896238527178001/ro --cache auto --thread-pool-size=1 -o announce_submounts
+   2851    2849 root     /opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896238527178001/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896238527178001/ro --cache auto --thread-pool-size=1 -o announce_submounts
+--- guest /proc/mounts (virtiofs)
+ctr: no running task found: task c1794896238527178001 not found
+--- guest kernel
+ctr: no running task found: task c1794896238527178001 not found
+--- pid 2849
+/opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896238527178001/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896238527178001/ro --cache auto --thread-pool-size=1 -o announce_submounts 
+VmSize:	    6536 kB
+VmRSS:	    4720 kB
+Threads:	1
+ci/eval.sh: line 120: /proc/2849/environ: Permission denied
+VFSD_FILTER_CONFIG unset
+total kB            6540    4720     312
+--- pid 2851
+/opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896238527178001/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896238527178001/ro --cache auto --thread-pool-size=1 -o announce_submounts 
+VmSize:	  141744 kB
+VmRSS:	    4304 kB
+Threads:	3
+ci/eval.sh: line 120: /proc/2851/environ: Permission denied
+VFSD_FILTER_CONFIG unset
+total kB          141748    4304     388
+=================== katarsfilt ===================
+--- daemon processes (pid ppid user args)
+   2849    2842 root     /opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896238527178001/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896238527178001/ro --cache auto --thread-pool-size=1 -o announce_submounts
+   2851    2849 root     /opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896238527178001/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896238527178001/ro --cache auto --thread-pool-size=1 -o announce_submounts
+   3017    3010 root     /opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896551679428505/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896551679428505/ro --cache auto --thread-pool-size=1 -o announce_submounts
+   3019    3017 root     /opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896551679428505/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896551679428505/ro --cache auto --thread-pool-size=1 -o announce_submounts
+--- guest /proc/mounts (virtiofs)
+ctr: no running task found: task c1794896551679428505 not found
+--- guest kernel
+ctr: no running task found: task c1794896551679428505 not found
+--- pid 3017
+/opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896551679428505/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896551679428505/ro --cache auto --thread-pool-size=1 -o announce_submounts 
+VmSize:	    6536 kB
+VmRSS:	    4900 kB
+Threads:	1
+ci/eval.sh: line 120: /proc/3017/environ: Permission denied
+VFSD_FILTER_CONFIG unset
+total kB            6540    4900     308
+--- pid 3019
+/opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896551679428505/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896551679428505/ro --cache auto --thread-pool-size=1 -o announce_submounts 
+VmSize:	  210152 kB
+VmRSS:	    5116 kB
+Threads:	4
+ci/eval.sh: line 120: /proc/3019/environ: Permission denied
+VFSD_FILTER_CONFIG unset
+total kB          210156    5116    1016
+--- filtered daemon stderr markers
+      1 vfsd-filter: FilteredFs active
+      1 vfsd-filter: policy loaded from "/etc/kata-eval/policy.toml"

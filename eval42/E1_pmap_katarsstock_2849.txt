@@ -1,0 +1,44 @@
+2849:   /opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896238527178001/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896238527178001/ro --cache auto --thread-pool-size=1 -o announce_submounts
+Address           Kbytes     RSS   Dirty Mode  Mapping
+000055fbbe6bc000     632     384       0 r---- virtiofsd-filtered
+000055fbbe75a000    2800    1956       0 r-x-- virtiofsd-filtered
+000055fbbea16000      68      68      68 r---- virtiofsd-filtered
+000055fbbea27000       8       8       8 rw--- virtiofsd-filtered
+000055fbf28a6000     132      80      80 rw---   [ anon ]
+00007f35ae200000     160     160       0 r---- libc.so.6
+00007f35ae228000    1572    1312       0 r-x-- libc.so.6
+00007f35ae3b1000     316     188       0 r---- libc.so.6
+00007f35ae400000      16      16      16 r---- libc.so.6
+00007f35ae404000       8       8       8 rw--- libc.so.6
+00007f35ae406000      52      20      20 rw---   [ anon ]
+00007f35ae4a7000       8       8       8 rw---   [ anon ]
+00007f35ae4a9000      16      16       0 r---- libgcc_s.so.1
+00007f35ae4ad000     144      64       0 r-x-- libgcc_s.so.1
+00007f35ae4d1000      16      16       0 r---- libgcc_s.so.1
+00007f35ae4d5000       4       4       4 r---- libgcc_s.so.1
+00007f35ae4d6000       4       4       4 rw--- libgcc_s.so.1
+00007f35ae4d7000       8       8       0 r---- libcap-ng.so.0.0.0
+00007f35ae4d9000      12      12       0 r-x-- libcap-ng.so.0.0.0
+00007f35ae4dc000       4       4       0 r---- libcap-ng.so.0.0.0
+00007f35ae4dd000       4       4       4 r---- libcap-ng.so.0.0.0
+00007f35ae4de000       4       4       4 rw--- libcap-ng.so.0.0.0
+00007f35ae4df000       8       8       0 r---- libseccomp.so.2.5.5
+00007f35ae4e1000      56      56       0 r-x-- libseccomp.so.2.5.5
+00007f35ae4ef000      56       0       0 r---- libseccomp.so.2.5.5
+00007f35ae4fd000       4       4       4 r---- libseccomp.so.2.5.5
+00007f35ae4fe000       4       4       4 rw--- libseccomp.so.2.5.5
+00007f35ae505000       4       0       0 -----   [ anon ]
+00007f35ae506000      12       0       0 rw---   [ anon ]
+00007f35ae509000       8       8       8 rw---   [ anon ]
+00007f35ae50b000      16       0       0 r----   [ anon ]
+00007f35ae50f000       8       0       0 r----   [ anon ]
+00007f35ae511000       8       8       0 r-x--   [ anon ]
+00007f35ae513000       4       4       0 r---- ld-linux-x86-64.so.2
+00007f35ae514000     172     172       0 r-x-- ld-linux-x86-64.so.2
+00007f35ae53f000      40      40       0 r---- ld-linux-x86-64.so.2
+00007f35ae549000       8       8       8 r---- ld-linux-x86-64.so.2
+00007f35ae54b000       8       8       8 rw--- ld-linux-x86-64.so.2
+00007fff4f95c000     132      56      56 rw---   [ stack ]
+ffffffffff600000       4       0       0 --x--   [ anon ]
+---------------- ------- ------- ------- 
+total kB            6540    4720     312

@@ -1,0 +1,23 @@
+=================== katarsstock (policy listing2) ===================
+--- host side
+HOST normal.txt ABSENT
+HOST probe.filter-test ABSENT
+HOST rel-link ABSENT
+HOST abs-link ABSENT
+HOST dotdot-link ABSENT
+HOST control-direct ABSENT
+HOST control-chain-1 ABSENT
+HOST control-chain-2 ABSENT
+HOST mutation links present: 0
+=================== katarsfilt (policy listing2) ===================
+--- host side
+HOST normal.txt ABSENT
+HOST probe.filter-test ABSENT
+HOST rel-link ABSENT
+HOST abs-link ABSENT
+HOST dotdot-link ABSENT
+HOST control-direct ABSENT
+HOST control-chain-1 ABSENT
+HOST control-chain-2 ABSENT
+HOST mutation links present: 0
+== audit E2 katarsfilt: records 0 allow 0 deny 0 non_json_lines 4

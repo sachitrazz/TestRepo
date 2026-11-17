@@ -1,0 +1,25 @@
+Kata 4.2.0
+4.2.0
+b828904fa3f1e49ddd7dc799c72cb1503cd1e772d354c3987c8d4189b2a623a8  /tmp/kata-dl/kata-static-4.2.0-amd64.tar.zst
+Go runtime shim shipped: no
+/opt/kata/bin:
+cloud-hypervisor
+openvmm
+qemu-system-x86_64
+qemu-system-x86_64-no-shared-fs
+qemu-system-x86_64-snp-experimental
+qemu-system-x86_64-tdx-experimental
+
+/opt/kata/runtime-rs/bin:
+containerd-shim-kata-v2
+=================== katarsdef  config /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml ===================
+915b45824b6e13c28944b7a0ee9f923398debbd136507303ec09c3d3af0eed3c  /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
+177:shared_fs = "virtio-fs"
+180:virtio_fs_daemon = "/opt/kata/libexec/virtiofsd"
+201:virtio_fs_extra_args = ["--thread-pool-size=1", "-o", "announce_submounts"]
+216:virtio_fs_cache = "auto"
+--- daemon processes
+   2585    2578 root     /opt/kata/libexec/virtiofsd --socket-path /run/kata/lf1794896123329742255/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/lf1794896123329742255/ro --cache auto --thread-pool-size=1 -o announce_submounts
+   2587    2585 root     /opt/kata/libexec/virtiofsd --socket-path /run/kata/lf1794896123329742255/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/lf1794896123329742255/ro --cache auto --thread-pool-size=1 -o announce_submounts
+   2590    2578 root     /opt/kata/bin/qemu-system-x86_64 -name sandbox-lf1794896123329742255 -kernel /opt/kata/share/kata-containers/vmlinux-6.18.35-202 -append reboot=k panic=1 systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket root=/dev/pmem0p1 rootflags=dax,data=ordered,errors=remount-ro ro rootfstype=ext4 agent.cdh_api_timeout=50 cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1 selinux=0 console=hvc0 -smp 1 -machine q35,accel=kvm,nvdimm=on,kernel_irqchip=on,memory-backend=entire-guest-memory-share -cpu host,pmu=off -m 2G,slots=10,maxmem=15701M -object memory-backend-file,id=entire-guest-memory-share,mem-path=/dev/shm,size=2G,share=on,prealloc=off,readonly=off -qmp unix:fd=16,server=on,wait=off -rtc base=utc,clock=host,driftfix=slew -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -device pci-bridge,bus=pcie.0,id=pci-bridge-0,chassis_nr=1,shpc=off,addr=2,io-reserve=4k,mem-reserve=1m,pref64-reserve=1m -device virtio-scsi-pci,id=scsi0,disable-modern=true -device vhost-vsock-pci,disable-modern=true,vhostfd=17,guest-cid=3085672393 -chardev socket,id=virtiofsd-chardev,path=/run/kata/lf1794896123329742255/root/virtiofsd.sock -device vhost-user-fs-pci,chardev=virtiofsd-chardev,tag=kataShared,queue-size=1024 -object memory-backend-file,id=TODO,mem-path=/opt/kata/share/kata-containers/kata-ubuntu-resolute.image,size=256M,share=off,prealloc=off,readonly=on -device nvdimm,memdev=TODO,unarmed=on -device virtio-serial-pci,id=serial0 -device virtconsole,id=console0,chardev=charconsole0 -chardev socket,id=charconsole0,server=on,wait=off,path=/run/kata/lf1794896123329742255/root/console.sock -vga none -no-user-config -nodefaults -nographic -no-reboot
+--- guest virtiofs mounts

@@ -1,0 +1,67 @@
+Tue Nov 17 06:17:17 UTC 2026
+Linux ip-10-0-129-162 7.0.0-1014-aws #14~24.04.1-Ubuntu SMP PREEMPT Fri Sep 18 21:24:59 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+4
+               total        used        free      shared  buff/cache   available
+Mem:           15701        1039        9640          46        5404       14662
+Swap:              0           0           0
+Model name:                              Intel(R) Xeon(R) 6975P-C
+Virtualization:                          VT-x
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+crw-rw-rw- 1 root kvm 10, 232 Nov 17 06:16 /dev/kvm
+crw-rw---- 1 root kvm 10, 241 Nov 17 06:16 /dev/vhost-vsock
+containerd containerd v2.4.2 b7a25261e029d68978bbf290df0a62fc819b3c51
+Client:
+  Version:  v2.4.2
+  Revision: b7a25261e029d68978bbf290df0a62fc819b3c51
+  Go version: go1.27.3
+
+Server:
+  Version:  v2.4.2
+  Revision: b7a25261e029d68978bbf290df0a62fc819b3c51
+--- kata
+4.2.0
+ci/eval.sh: line 84: /opt/kata/bin/kata-runtime: No such file or directory
+QEMU emulator version 11.0.1 (kata-static)
+ci/eval.sh: line 86: /opt/kata/libexec/virtiofsd: Permission denied
+virtiofsd 0.2.0
+    qemu:
+      description: "VMM that uses KVM"
+      url: "https://github.com/qemu/qemu"
+      version: "v11.0.1"
+--
+  virtiofsd:
+    description: "vhost-user virtio-fs device backend written in Rust"
+    url: "https://gitlab.com/virtio-fs/virtiofsd"
+    version: "v1.14.0"
+--- sha256
+d748251229b29d6ad1781b704e3d1f69a55c15373d80bd1cf697dc09782376cb  /opt/vfsd/virtiofsd-filtered
+f1de902f5f0f79af24cb67e3b5a5d34e717741b859926a6ac0cd310f74b7b716  /opt/vfsd/vfsd-stock
+d91ccaa8cdbaf99dc03d57af74d32cf047b45317587a9b4e188b03b5df2189ce  /opt/vfsd/vfsd-filt
+317ded878d4e2f2aa4a092beb74dded4fcab6a24bb2383c5ed462f07269eb52b  /etc/kata-eval/rs-filt.toml
+b4e63450176411780d27d1eb1dfd8ff8f25c05be15544be953af5cd88e61c75c  /etc/kata-eval/rs-stock.toml
+b573264046ddf598b7dc47e5e9ac980dca8bb55c819db242f66bec5ee8e8fb2f  /home/runner/work/TestRepo/TestRepo/ci/policies/chmod_denied_all.toml
+8d1b4f50bac59ee24451c5e9d7c8fccf02699a5c8ffdf279c5933779105e99a5  /home/runner/work/TestRepo/TestRepo/ci/policies/dotdot_allowed_all.toml
+2d5d2c126482cc422492fd1f8914697d66c8818f7bac0261ba18612ef586a600  /home/runner/work/TestRepo/TestRepo/ci/policies/listing2.toml
+0b0a8ab3b460de646b4d7c4c3e93f98edbc86c7f5f16f30ae0707e727e977dcc  /home/runner/work/TestRepo/TestRepo/ci/policies/listing2_all.toml
+fc3cb0b481a886231e3705139f2f163b409d0914f1eee2b959e4f12f5f74de21  /opt/kata/runtime-rs/bin/containerd-shim-kata-v2
+sha256sum: /opt/kata/bin/containerd-shim-kata-v2: No such file or directory
+15b2e72a78cc08a9bd8a6943e89fb69c88cb3cbeb63069efceade835342ac7d4  /opt/kata/libexec/virtiofsd
+b828904fa3f1e49ddd7dc799c72cb1503cd1e772d354c3987c8d4189b2a623a8  /tmp/kata-dl/kata-static-4.2.0-amd64.tar.zst
+--- runtime-rs config keys
+/etc/kata-eval/rs-filt.toml:86:default_vcpus = 1
+/etc/kata-eval/rs-filt.toml:138:default_memory = 2048
+/etc/kata-eval/rs-filt.toml:177:shared_fs = "virtio-fs"
+/etc/kata-eval/rs-filt.toml:180:virtio_fs_daemon = "/opt/vfsd/vfsd-filt"
+/etc/kata-eval/rs-filt.toml:185:valid_virtio_fs_daemon_paths = ["/opt/vfsd/vfsd-stock","/opt/vfsd/vfsd-filt","/opt/kata/libexec/virtiofsd"]
+/etc/kata-eval/rs-filt.toml:188:virtio_fs_cache_size = 0
+/etc/kata-eval/rs-filt.toml:201:virtio_fs_extra_args = ["--thread-pool-size=1", "-o", "announce_submounts"]
+/etc/kata-eval/rs-filt.toml:216:virtio_fs_cache = "auto"
+/etc/kata-eval/rs-stock.toml:86:default_vcpus = 1
+/etc/kata-eval/rs-stock.toml:138:default_memory = 2048
+/etc/kata-eval/rs-stock.toml:177:shared_fs = "virtio-fs"
+/etc/kata-eval/rs-stock.toml:180:virtio_fs_daemon = "/opt/vfsd/vfsd-stock"
+/etc/kata-eval/rs-stock.toml:185:valid_virtio_fs_daemon_paths = ["/opt/vfsd/vfsd-stock","/opt/vfsd/vfsd-filt","/opt/kata/libexec/virtiofsd"]
+/etc/kata-eval/rs-stock.toml:188:virtio_fs_cache_size = 0
+/etc/kata-eval/rs-stock.toml:201:virtio_fs_extra_args = ["--thread-pool-size=1", "-o", "announce_submounts"]
+/etc/kata-eval/rs-stock.toml:216:virtio_fs_cache = "auto"

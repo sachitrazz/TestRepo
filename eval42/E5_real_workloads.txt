@@ -1,0 +1,28 @@
+=================== workload tar, stock ===================
+=================== workload tar, filtered, policy listing2_all ===================
+== audit E5 tar listing2_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload tar, filtered, policy dotdot_allowed_all ===================
+== audit E5 tar dotdot_allowed_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload tar, filtered, policy chmod_denied_all ===================
+== audit E5 tar chmod_denied_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload git, stock ===================
+=================== workload git, filtered, policy listing2_all ===================
+== audit E5 git listing2_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload git, filtered, policy dotdot_allowed_all ===================
+== audit E5 git dotdot_allowed_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload git, filtered, policy chmod_denied_all ===================
+== audit E5 git chmod_denied_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload npm, stock ===================
+=================== workload npm, filtered, policy listing2_all ===================
+== audit E5 npm listing2_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload npm, filtered, policy dotdot_allowed_all ===================
+== audit E5 npm dotdot_allowed_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload npm, filtered, policy chmod_denied_all ===================
+== audit E5 npm chmod_denied_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload venv, stock ===================
+=================== workload venv, filtered, policy listing2_all ===================
+== audit E5 venv listing2_all: records 0 allow 0 deny 0 non_json_lines 8
+=================== workload venv, filtered, policy dotdot_allowed_all ===================
+== audit E5 venv dotdot_allowed_all: records 0 allow 0 deny 0 non_json_lines 4
+=================== workload venv, filtered, policy chmod_denied_all ===================
+== audit E5 venv chmod_denied_all: records 0 allow 0 deny 0 non_json_lines 4

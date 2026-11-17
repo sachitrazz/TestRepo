@@ -1,0 +1,42 @@
++ BIN=/opt/vfsd/virtiofsd-filtered
++ DEF=/opt/kata/share/defaults/kata-containers
+++ ls /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
++ RS_DEF=/opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
++ GO_DEF=/opt/kata/share/defaults/kata-containers/configuration-qemu.toml
++ sudo mkdir -p /etc/kata-eval /var/log/vfsd
++ sudo chmod 0777 /var/log/vfsd
++ sudo tee /opt/vfsd/vfsd-stock
++ sudo tee /opt/vfsd/vfsd-filt
++ sudo chmod 0755 /opt/vfsd/vfsd-stock /opt/vfsd/vfsd-filt
++ VALID='["/opt/vfsd/vfsd-stock","/opt/vfsd/vfsd-filt","/opt/kata/libexec/virtiofsd"]'
++ for v in stock filt
++ sudo tee /etc/kata-eval/rs-stock.toml
++ sudo sed -E 's|^virtio_fs_daemon = .*|virtio_fs_daemon = "/opt/vfsd/vfsd-stock"|; s|^valid_virtio_fs_daemon_paths = .*|valid_virtio_fs_daemon_paths = ["/opt/vfsd/vfsd-stock","/opt/vfsd/vfsd-filt","/opt/kata/libexec/virtiofsd"]|' /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
++ for v in stock filt
++ sudo tee /etc/kata-eval/rs-filt.toml
++ sudo sed -E 's|^virtio_fs_daemon = .*|virtio_fs_daemon = "/opt/vfsd/vfsd-filt"|; s|^valid_virtio_fs_daemon_paths = .*|valid_virtio_fs_daemon_paths = ["/opt/vfsd/vfsd-stock","/opt/vfsd/vfsd-filt","/opt/kata/libexec/virtiofsd"]|' /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
++ '[' -f /opt/kata/share/defaults/kata-containers/configuration-qemu.toml ']'
++ mk_shim katarsstock /etc/kata-eval/rs-stock.toml /opt/kata/runtime-rs/bin/containerd-shim-kata-v2
++ sudo tee /usr/local/bin/containerd-shim-katarsstock-v2
++ sudo chmod 0755 /usr/local/bin/containerd-shim-katarsstock-v2
++ mk_shim katarsfilt /etc/kata-eval/rs-filt.toml /opt/kata/runtime-rs/bin/containerd-shim-kata-v2
++ sudo tee /usr/local/bin/containerd-shim-katarsfilt-v2
++ sudo chmod 0755 /usr/local/bin/containerd-shim-katarsfilt-v2
++ '[' -x /opt/kata/bin/containerd-shim-kata-v2 ']'
++ echo 'no Go runtime shim in this release'
+no Go runtime shim in this release
++ echo 'runtime-rs default config: /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml'
+runtime-rs default config: /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
++ grep -nE '^(shared_fs|virtio_fs_daemon|valid_virtio_fs_daemon_paths|virtio_fs_extra_args|virtio_fs_cache|virtio_fs_cache_size|virtio_fs_is_dax|kernel|image|default_memory|default_vcpus)\b' /etc/kata-eval/rs-filt.toml /etc/kata-eval/go-stock.toml
+/etc/kata-eval/rs-filt.toml:17:kernel = "/opt/kata/share/kata-containers/vmlinux.container"
+/etc/kata-eval/rs-filt.toml:18:image = "/opt/kata/share/kata-containers/kata-containers.img"
+/etc/kata-eval/rs-filt.toml:86:default_vcpus = 1
+/etc/kata-eval/rs-filt.toml:138:default_memory = 2048
+/etc/kata-eval/rs-filt.toml:177:shared_fs = "virtio-fs"
+/etc/kata-eval/rs-filt.toml:180:virtio_fs_daemon = "/opt/vfsd/vfsd-filt"
+/etc/kata-eval/rs-filt.toml:185:valid_virtio_fs_daemon_paths = ["/opt/vfsd/vfsd-stock","/opt/vfsd/vfsd-filt","/opt/kata/libexec/virtiofsd"]
+/etc/kata-eval/rs-filt.toml:188:virtio_fs_cache_size = 0
+/etc/kata-eval/rs-filt.toml:201:virtio_fs_extra_args = ["--thread-pool-size=1", "-o", "announce_submounts"]
+/etc/kata-eval/rs-filt.toml:216:virtio_fs_cache = "auto"
+grep: /etc/kata-eval/go-stock.toml: No such file or directory
++ true

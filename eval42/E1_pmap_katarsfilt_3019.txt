@@ -1,0 +1,64 @@
+3019:   /opt/vfsd/virtiofsd-filtered --socket-path /run/kata/c1794896551679428505/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/c1794896551679428505/ro --cache auto --thread-pool-size=1 -o announce_submounts
+Address           Kbytes     RSS   Dirty Mode  Mapping
+000055c3f37f4000     632     304       0 r---- virtiofsd-filtered
+000055c3f3892000    2800    1948       0 r-x-- virtiofsd-filtered
+000055c3f3b4e000      68      68      68 r---- virtiofsd-filtered
+000055c3f3b5f000       8       8       8 rw--- virtiofsd-filtered
+000055c415f44000     132     132     132 rw---   [ anon ]
+000055c415f65000     192       4       4 rw---   [ anon ]
+00007f5e54000000     132       8       8 rw---   [ anon ]
+00007f5e54021000   65404       0       0 -----   [ anon ]
+00007f5e58000000     132       4       4 rw---   [ anon ]
+00007f5e58021000   65404       0       0 -----   [ anon ]
+00007f5e60000000     132       4       4 rw---   [ anon ]
+00007f5e60021000   65404       0       0 -----   [ anon ]
+00007f5e64b64000       4       0       0 -----   [ anon ]
+00007f5e64b65000    2048       8       8 rw---   [ anon ]
+00007f5e64d65000       4       0       0 -----   [ anon ]
+00007f5e64d66000    2048       8       8 rw---   [ anon ]
+00007f5e64f66000       4       0       0 -----   [ anon ]
+00007f5e64f67000    2048       8       8 rw---   [ anon ]
+00007f5e65167000     612     612     612 rw---   [ anon ]
+00007f5e65200000     160     160       0 r---- libc.so.6
+00007f5e65228000    1572    1120       0 r-x-- libc.so.6
+00007f5e653b1000     316     188       0 r---- libc.so.6
+00007f5e65400000      16      16      16 r---- libc.so.6
+00007f5e65404000       8       8       8 rw--- libc.so.6
+00007f5e65406000      52      20      20 rw---   [ anon ]
+00007f5e65470000       4       0       0 -----   [ anon ]
+00007f5e65471000      12       0       0 rw---   [ anon ]
+00007f5e65474000       4       0       0 -----   [ anon ]
+00007f5e65475000      12       0       0 rw---   [ anon ]
+00007f5e65478000       8       8       8 rw---   [ anon ]
+00007f5e6547a000      16      16       0 r---- libgcc_s.so.1
+00007f5e6547e000     144       0       0 r-x-- libgcc_s.so.1
+00007f5e654a2000      16       0       0 r---- libgcc_s.so.1
+00007f5e654a6000       4       4       4 r---- libgcc_s.so.1
+00007f5e654a7000       4       4       4 rw--- libgcc_s.so.1
+00007f5e654a8000       8       8       0 r---- libcap-ng.so.0.0.0
+00007f5e654aa000      12      12       0 r-x-- libcap-ng.so.0.0.0
+00007f5e654ad000       4       4       0 r---- libcap-ng.so.0.0.0
+00007f5e654ae000       4       4       4 r---- libcap-ng.so.0.0.0
+00007f5e654af000       4       4       4 rw--- libcap-ng.so.0.0.0
+00007f5e654b0000       8       8       0 r---- libseccomp.so.2.5.5
+00007f5e654b2000      56      56       0 r-x-- libseccomp.so.2.5.5
+00007f5e654c0000      56      56       0 r---- libseccomp.so.2.5.5
+00007f5e654ce000       4       4       4 r---- libseccomp.so.2.5.5
+00007f5e654cf000       4       4       4 rw--- libseccomp.so.2.5.5
+00007f5e654d2000       4       0       0 -----   [ anon ]
+00007f5e654d3000      12       0       0 rw---   [ anon ]
+00007f5e654d6000       4       0       0 -----   [ anon ]
+00007f5e654d7000      12       0       0 rw---   [ anon ]
+00007f5e654da000       8       8       8 rw---   [ anon ]
+00007f5e654dc000      16       0       0 r----   [ anon ]
+00007f5e654e0000       8       0       0 r----   [ anon ]
+00007f5e654e2000       8       8       0 r-x--   [ anon ]
+00007f5e654e4000       4       0       0 r---- ld-linux-x86-64.so.2
+00007f5e654e5000     172     172       0 r-x-- ld-linux-x86-64.so.2
+00007f5e65510000      40      40       0 r---- ld-linux-x86-64.so.2
+00007f5e6551a000       8       8       8 r---- ld-linux-x86-64.so.2
+00007f5e6551c000       8       8       8 rw--- ld-linux-x86-64.so.2
+00007fff5447a000     132      52      52 rw---   [ stack ]
+ffffffffff600000       4       0       0 --x--   [ anon ]
+---------------- ------- ------- ------- 
+total kB          210156    5116    1016

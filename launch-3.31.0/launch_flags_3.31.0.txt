@@ -1,0 +1,40 @@
+Kata 3.31.0
+3.31.0
+68c2786a0b97023f62f3eca02dc868b78a794e5469d4ddd6cc9e0bd4a7212b0b  /tmp/kata-dl/kata-static-3.31.0-amd64.tar.zst
+Go runtime shim shipped: yes
+/opt/kata/bin:
+cloud-hypervisor
+containerd-shim-kata-v2
+firecracker
+jailer
+kata-collect-data.sh
+kata-monitor
+kata-runtime
+qemu-system-x86_64
+qemu-system-x86_64-snp-experimental
+qemu-system-x86_64-tdx-experimental
+
+/opt/kata/runtime-rs/bin:
+containerd-shim-kata-v2
+=================== katarsdef  config /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml ===================
+493edb83afa44257fe9e0b22332f1681d2c31f4616e1fbcfe2526c327ddee193  /opt/kata/share/defaults/kata-containers/runtime-rs/configuration-qemu-runtime-rs.toml
+168:shared_fs = "virtio-fs"
+171:virtio_fs_daemon = "/opt/kata/libexec/virtiofsd"
+192:virtio_fs_extra_args = ["--thread-pool-size=1", "-o", "announce_submounts"]
+207:virtio_fs_cache = "auto"
+--- daemon processes
+   2567    2560 root     /opt/kata/libexec/virtiofsd --socket-path /run/kata/lf1794896118985225108/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/lf1794896118985225108/ro --cache auto --thread-pool-size=1 -o announce_submounts
+   2569    2567 root     /opt/kata/libexec/virtiofsd --socket-path /run/kata/lf1794896118985225108/root/virtiofsd.sock --shared-dir /run/kata-containers/shared/sandboxes/lf1794896118985225108/ro --cache auto --thread-pool-size=1 -o announce_submounts
+   2572    2560 root     /opt/kata/bin/qemu-system-x86_64 -name sandbox-lf1794896118985225108 -kernel /opt/kata/share/kata-containers/vmlinux-6.18.28-194 -append reboot=k panic=1 systemd.unit=kata-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket root=/dev/pmem0p1 rootflags=dax,data=ordered,errors=remount-ro ro rootfstype=ext4 agent.cdh_api_timeout=50 cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1 selinux=0 console=hvc0 -smp 1,maxcpus=4 -machine q35,accel=kvm,nvdimm=on,kernel_irqchip=on -cpu host,pmu=off -m 2G,slots=10,maxmem=15983M -object memory-backend-file,id=entire-guest-memory-share,mem-path=/dev/shm,size=2G,share=on,prealloc=off,readonly=off -qmp unix:fd=16,server=on,wait=off -rtc base=utc,clock=host,driftfix=slew -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -device pci-bridge,bus=pcie.0,id=pci-bridge-0,chassis_nr=1,shpc=off,addr=2,io-reserve=4k,mem-reserve=1m,pref64-reserve=1m -device virtio-scsi-pci,id=scsi0,disable-modern=true -device vhost-vsock-pci,disable-modern=true,vhostfd=17,guest-cid=4166029119 -chardev socket,id=virtiofsd-chardev,path=/run/kata/lf1794896118985225108/root/virtiofsd.sock -device vhost-user-fs-pci,chardev=virtiofsd-chardev,tag=kataShared,queue-size=1024 -numa node,memdev=entire-guest-memory-share -object memory-backend-file,id=TODO,mem-path=/opt/kata/share/kata-containers/kata-ubuntu-noble.image,size=256M,share=off,prealloc=off,readonly=on -device nvdimm,memdev=TODO,unarmed=on -device virtio-serial-pci,id=serial0 -device virtconsole,id=console0,chardev=charconsole0 -chardev socket,id=charconsole0,server=on,wait=off,path=/run/kata/lf1794896118985225108/root/console.sock -vga none -no-user-config -nodefaults -nographic -no-reboot
+--- guest virtiofs mounts
+=================== katagodef  config /opt/kata/share/defaults/kata-containers/configuration-qemu.toml ===================
+afe9317c2f2b6e4d15636f47c8f82b63d87be039014c88ea55267fc640e70497  /opt/kata/share/defaults/kata-containers/configuration-qemu.toml
+166:shared_fs = "virtio-fs"
+169:virtio_fs_daemon = "/opt/kata/libexec/virtiofsd"
+190:virtio_fs_extra_args = ["--thread-pool-size=1", "--announce-submounts"]
+209:virtio_fs_cache = "auto"
+--- daemon processes
+   2675    2657 root     /opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/lf1794896138668608832/shared --fd=3 --thread-pool-size=1 --announce-submounts
+   2678    2675 root     /opt/kata/libexec/virtiofsd --syslog --cache=auto --shared-dir=/run/kata-containers/shared/sandboxes/lf1794896138668608832/shared --fd=3 --thread-pool-size=1 --announce-submounts
+--- guest virtiofs mounts
+none / virtiofs rw,relatime 0 0
