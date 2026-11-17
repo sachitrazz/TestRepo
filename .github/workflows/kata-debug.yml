@@ -1,0 +1,23 @@
+name: kata-debug
+on:
+  push:
+    branches: [kata-eval]
+    paths: [".github/workflows/kata-debug.yml", "ci/debug.sh"]
+permissions:
+  contents: read
+jobs:
+  debug:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env: { GH_TOKEN: "${{ github.token }}" }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the daemon
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq libseccomp-dev libcap-ng-dev
+          tar xzf vfsd-filter-0.2.0.tar.gz
+          cd daemon && cargo build --release --locked 2>&1 | tail -2
+          sudo mkdir -p /opt/vfsd && sudo install -m 0755 target/release/virtiofsd-filtered /opt/vfsd/virtiofsd-filtered
+      - run: bash ci/setup_kata.sh 4.2.0
+      - run: bash ci/setup_shims.sh
+      - run: bash ci/debug.sh
