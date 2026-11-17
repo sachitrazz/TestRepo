@@ -4,7 +4,7 @@
 set -uo pipefail
 V="$1"; R=${RESULTS:-$PWD/results}; mkdir -p "$R"
 IMG=mirror.gcr.io/library/alpine:3.20
-for i in 1 2 3; do sudo ctr images pull -q "$IMG" >/dev/null && break || sleep 10; done
+for i in 1 2 3; do sudo ctr images pull "$IMG" >/dev/null && break || sleep 10; done
 DEF=/opt/kata/share/defaults/kata-containers
 RS=$(ls $DEF/runtime-rs/configuration-qemu-runtime-rs.toml 2>/dev/null || ls $DEF/runtime-rs/configuration*qemu*.toml 2>/dev/null | head -1)
 GO=$DEF/configuration-qemu.toml
@@ -18,7 +18,13 @@ mk katarsdef "$RS" /opt/kata/runtime-rs/bin/containerd-shim-kata-v2
 mk katagodef "$GO" /opt/kata/bin/containerd-shim-kata-v2
 {
 echo "Kata $V"; cat /opt/kata/VERSION 2>/dev/null; cat /tmp/kata-dl/asset.sha256
-for pair in "katarsdef $RS" "katagodef $GO"; do
+echo "Go runtime shim shipped: $([ -x /opt/kata/bin/containerd-shim-kata-v2 ] && echo yes || echo no)"
+ls /opt/kata/bin /opt/kata/runtime-rs/bin
+PAIRS="katarsdef $RS"
+[ -f "$GO" ] && [ -x /opt/kata/bin/containerd-shim-kata-v2 ] && PAIRS="$PAIRS|katagodef $GO"
+IFS="|"; set -f
+for pair in $PAIRS; do
+  unset IFS; set +f
   set -- $pair; shim=$1; cfg=$2
   echo "=================== $shim  config $cfg ==================="
   sha256sum "$cfg"

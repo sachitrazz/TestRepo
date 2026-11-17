@@ -95,7 +95,9 @@ log "E0 environment and hashes"
 log "E1 kata facts: daemon command line, guest mounts, process maps"
 policy listing2
 {
-for rt in katarsstock katarsfilt katagostock; do
+RTS="katarsstock katarsfilt"; [ -x /usr/local/bin/containerd-shim-katagostock-v2 ] && RTS="$RTS katagostock"
+echo "release ships Go shim: $([ -x /opt/kata/bin/containerd-shim-kata-v2 ] && echo yes || echo no)"
+for rt in $RTS; do
   fresh_share
   before=$(daemon_pids | tr '\n' ' ')
   id=$(cid); start_c "$rt" "$id"
