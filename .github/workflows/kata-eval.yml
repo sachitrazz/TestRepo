@@ -23,7 +23,11 @@ jobs:
           mkdir -p results
           cd vfsd-filter-0.2.0
           cargo --version | tee ../results/build_toolchain.txt
-          cargo test --release --locked -- --test-threads=1 2>&1 | tee ../results/archive_test_output.txt
+          # As root, as on the benchmark host: FilterConfig::default() writes its
+          # audit log to /var/log/kata-vfsd-filter.log, which the two passthrough
+          # unit tests open. The non-root run is kept to show that dependency.
+          cargo test --release --locked -- --test-threads=1 2>&1 | tee ../results/archive_test_output_nonroot.txt
+          sudo -E env "PATH=$PATH" cargo test --release --locked -- --test-threads=1 2>&1 | tee ../results/archive_test_output.txt
       - name: Build the filtered daemon
         run: |
           cd daemon
