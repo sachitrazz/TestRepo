@@ -1,0 +1,41 @@
+# Listing 2 of the paper; the only difference is the audit destination,
+# which is stderr here because the wrapper points stderr at the audit log.
+[filter]
+enabled = true
+default_policy = "allow"
+
+[operations]
+allow_read = true
+allow_write = true
+allow_create = true
+allow_delete = true
+allow_symlink = true
+allow_fallocate = true
+
+[operations.open_flags]
+deny_trunc = false
+deny_direct_io = false
+
+[operations.setattr]
+allow_chmod = false
+allow_chown = true
+allow_truncate = true
+allow_utime = true
+
+[names]
+deny_suffixes = [".filter-test", ".key", ".pem"]
+deny_prefixes = [".ssh"]
+deny_exact = ["shadow"]
+
+[paths]
+deny_root_children = ["etc"]
+
+[symlink]
+allow_absolute_targets = true
+allow_dotdot_targets = true
+
+[audit]
+enabled = true
+destination = "stderr"
+level = "all"
+channel_capacity = 4096

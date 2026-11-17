@@ -1,0 +1,97 @@
+name: kata-eval
+on:
+  push:
+    branches: [kata-eval]
+  workflow_dispatch:
+permissions:
+  contents: write
+env:
+  ARCHIVE_SHA256: 2394c8277a10cc92d7cee5247c8bd6c567da3c74c18bbcfdd4212e48c039657e
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and unpack the archived source
+        run: |
+          echo "$ARCHIVE_SHA256  vfsd-filter-0.2.0.tar.gz" | sha256sum -c -
+          tar xzf vfsd-filter-0.2.0.tar.gz
+      - name: Build dependencies
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libseccomp-dev libcap-ng-dev
+      - name: Test the archived source on this runner
+        run: |
+          mkdir -p results
+          cd vfsd-filter-0.2.0
+          cargo --version | tee ../results/build_toolchain.txt
+          cargo test --release --locked -- --test-threads=1 2>&1 | tee ../results/archive_test_output.txt
+      - name: Build the filtered daemon
+        run: |
+          cd daemon
+          cargo build --release --locked 2>&1 | tail -3
+          cp target/release/virtiofsd-filtered ../results/
+          sha256sum target/release/virtiofsd-filtered | tee ../results/daemon.sha256
+      - uses: actions/upload-artifact@v4
+        with: { name: build, path: results }
+
+  eval42:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    env: { GH_TOKEN: "${{ github.token }}", RESULTS: "${{ github.workspace }}/results" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: build, path: build }
+      - name: Install Kata Containers 4.2.0
+        run: bash ci/setup_kata.sh 4.2.0
+      - name: Install the daemon and register shims
+        run: |
+          sudo mkdir -p /opt/vfsd && sudo install -m 0755 build/virtiofsd-filtered /opt/vfsd/virtiofsd-filtered
+          bash ci/setup_shims.sh 2>&1 | tee setup_shims.log
+      - name: Prepare workloads
+        run: bash ci/prep_workloads.sh
+      - name: Evaluate
+        run: bash ci/eval.sh
+      - name: Collect logs
+        if: always()
+        run: |
+          mkdir -p results
+          cp setup_shims.log results/ 2>/dev/null || true
+          sudo cp /var/log/vfsd/stock-stderr.log results/ 2>/dev/null || true
+          sudo journalctl --since "-3h" --no-pager 2>/dev/null | grep -iE 'kata|virtiofsd|containerd-shim' | tail -400 > results/journal_tail.txt || true
+          sudo chmod -R a+r results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: eval42, path: results }
+
+  launch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix: { version: ["3.30.0", "3.31.0", "4.2.0"] }
+    env: { GH_TOKEN: "${{ github.token }}", RESULTS: "${{ github.workspace }}/results" }
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash ci/setup_kata.sh ${{ matrix.version }}
+      - run: bash ci/launch_flags.sh ${{ matrix.version }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: "launch-${{ matrix.version }}", path: results }
+
+  publish:
+    needs: [build, eval42, launch]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: out }
+      - name: Push results to the kata-eval-results branch
+        run: |
+          cd out
+          rm -f build/virtiofsd-filtered
+          echo "run ${{ github.run_id }} commit ${{ github.sha }} $(date -u)" > RUN.txt
+          git init -q && git checkout -q -b kata-eval-results
+          git -c user.name=ci -c user.email=ci@localhost add -A
+          git -c user.name=ci -c user.email=ci@localhost commit -qm "results of run ${{ github.run_id }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" kata-eval-results
