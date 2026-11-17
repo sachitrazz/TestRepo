@@ -11,7 +11,7 @@ for rt in katarsstock katarsfilt; do
        "$IMG" "$id" sh -c 'echo GUEST_OK; uname -r; cat /proc/mounts | head -5'
   echo "exit $?"
   ps -eo pid,ppid,args | grep -E '[v]irtiofsd|[q]emu|[s]him' | cut -c1-250
-  sudo tail -30 /var/log/vfsd/stock-stderr.log /var/log/vfsd/audit.jsonl 2>&1
+  sudo tail -n 30 /var/log/vfsd/stock-stderr.log /var/log/vfsd/audit.jsonl 2>&1
   sudo journalctl --since "-3min" --no-pager | grep -iE 'kata|virtiofs|shim|qemu' | tail -60 | cut -c1-300
   sudo pkill -f "$id" 2>/dev/null
 done

@@ -11,14 +11,16 @@ GO_DEF=$DEF/configuration-qemu.toml
 sudo mkdir -p /etc/kata-eval /var/log/vfsd
 sudo chmod 0777 /var/log/vfsd
 sudo tee /opt/vfsd/vfsd-stock >/dev/null <<W
-#!/bin/sh
-exec 2>>/var/log/vfsd/stock-stderr.log
+#!/bin/bash
+# runtime-rs reads the daemon's stderr and waits for "Waiting for vhost-user
+# socket connection", so stderr is copied to the log rather than redirected.
+exec 2> >(tee -a /var/log/vfsd/stock-stderr.log >&2)
 exec $BIN "\$@"
 W
 sudo tee /opt/vfsd/vfsd-filt >/dev/null <<W
-#!/bin/sh
+#!/bin/bash
 export VFSD_FILTER_CONFIG=/etc/kata-eval/policy.toml
-exec 2>>/var/log/vfsd/audit.jsonl
+exec 2> >(tee -a /var/log/vfsd/audit.jsonl >&2)
 exec $BIN "\$@"
 W
 sudo chmod 0755 /opt/vfsd/vfsd-stock /opt/vfsd/vfsd-filt
